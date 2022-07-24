@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+
 public function index(){
 
-    $posts=Post::latest();
-    if(request('search')){
-        $posts->where('title','like','%'.request('search').'%')
-        ->orWhere('body','like','%'.request('search').'%');
-    }
+
     return view('posts.index',[
-        'posts' => Post::latest()->filter(request(['search','category','author']))->get(),
-        'currentCategory' => Category::where('slug',request('category'))->first(),
+        'posts' => Post::latest()->filter
+        (request(['search','category','author']))
+        ->paginate(6)->withQueryString(),
+
 
     ]);
 }
@@ -32,6 +32,7 @@ public function index(){
     }
 
 }
+
 
 
 
