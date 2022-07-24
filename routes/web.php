@@ -43,5 +43,5 @@ Route::get('authors/{author}', function (User $author){
     return view('posts',[
         'posts' => $author->posts
     ]);
-})->name('authors');
+});
 
