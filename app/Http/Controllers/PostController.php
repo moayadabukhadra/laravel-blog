@@ -16,14 +16,15 @@ public function index(){
         ->orWhere('body','like','%'.request('search').'%');
     }
     return view('posts.index',[
-        'posts' => Post::latest()->filter(request(['search','category']))->get(),
+        'posts' => Post::latest()->filter(request(['search','category','author']))->get(),
         'currentCategory' => Category::where('slug',request('category'))->first(),
+
     ]);
 }
 
     public function show(Post $post)
     {
-        return view('post.show',[
+        return view('posts.show',[
             'post' => $post
         ]);
 

@@ -38,9 +38,9 @@ Route::get('posts/{post}',[PostController::class , 'show']);
 // })->name('categories');
 
 
-Route::get('authors/{author}', function (User $author){
+Route::get('authors/{author:name}', function (User $author){
 
-    return view('posts',[
+    return view('posts.index',[
         'posts' => $author->posts
     ]);
 });
