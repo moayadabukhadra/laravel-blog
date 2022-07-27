@@ -11,8 +11,7 @@ class Post extends Model
 
     protected $with = ['category', 'author', 'comments'];
 
-
-    protected $fillable = ['title','category_id', 'body', 'published'];
+    protected $guarded = [];
 
     public function category()
     {
