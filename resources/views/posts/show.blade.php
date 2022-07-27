@@ -64,6 +64,9 @@
                             </header>
                             <div class="flex">
                                 <textarea name="body" id="body" class="mt-2 w-full" placeholder="Your comment here..."></textarea>
+                                @error('body')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                                @enderror
 
                             </div>
                             <footer class="flex justify-end items-center mt-6">
