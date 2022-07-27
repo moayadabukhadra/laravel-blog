@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 <body style="font-family: Open Sans, sans-serif">
-    <section class="px-6 py-8">
+    <section class="px-6 py-8 ">
         <nav class="md:flex md:justify-between md:items-center">
             <div>
                 <a href="/">

@@ -26,8 +26,21 @@
         </div>
         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-2">
             Login
+
+        </button>
+
+        <p class="text-center mt-2">
+            Don't have an account? <a href="/register" class="text-blue-500 hover:text-blue-700">Register</a>
+        </p>
+
+
         </form>
+        </div>
+
+
+
     </main>
+
     </section>
 </x-layout>
 

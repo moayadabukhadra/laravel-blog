@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $with = ['category', 'author'];
+    protected $with = ['category', 'author', 'comments'];
 
 
     protected $fillable = ['title','category_id', 'body', 'published'];
@@ -23,6 +23,12 @@ class Post extends Model
     {
         return $this->belongsTo(User::class , 'user_id');
     }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+
 
     public function scopeFilter($query, array $filters){ // Post::newQuery()->filter();
         $query->when($filters['search'] ?? false, fn($query, $search) =>$query
@@ -39,8 +45,5 @@ class Post extends Model
             ->wherehas('author',fn($query) =>
             $query->where('name', $author)));
 
-
-
-
-    }
+}
 }
