@@ -19,7 +19,6 @@ class CreatPostTable extends Migration
             $table->foreignId('category_id');
             $table->string('title');
             $table->text('body');
-            $table->timestamp('published_at')->nullable();
             $table->timestamps();
 
 
