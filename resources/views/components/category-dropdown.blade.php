@@ -5,9 +5,9 @@
 
     </x-slot>
 
-    <x-drobdown-item href='/?{{ http_build_query(request()->except("category","page")) }}' :active="request()->routeIs('home')">All</x-drobdown-item>
+    <x-drobdown-item href='/?{{ http_build_query(request()->except("category","page")) }}' :active="request()->is('/')">All</x-drobdown-item>
     @foreach ($categories as $category)
-    <x-drobdown-item href='/?category={{ $category->slug }}&{{ http_build_query(request()->except("category","page")) }}' :active="request()->is('categories/' . $category->slug)">{{ $category->name }}</x-drobdown-item>
+    <x-drobdown-item href='/?category={{ $category->slug }}&{{ http_build_query(request()->except("category","page")) }}' :active="request()->is('?/category=' . $category->slug)">{{ $category->name }}</x-drobdown-item>
     @endforeach
 
 
