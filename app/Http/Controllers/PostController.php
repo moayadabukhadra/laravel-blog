@@ -51,10 +51,8 @@ public function index(){
     {
 
 
-        return view('posts.create',[
-            'categories' => Category::all(),
-        ]);
-        
+        return view('posts.create');
+
     }
 
     public function store()
@@ -63,12 +61,15 @@ public function index(){
         $this->validate(request(), [
             'title' => 'required|min:3',
             'body' => 'required|min:3',
+            'thumbnail' => 'required|image',
             'category_id' => 'required|exists:categories,id',
+
         ]);
 
         Post::create([
             'title' => request('title'),
             'body' => request('body'),
+            'thumbnail' => request()->file('thumbnail')->store('thumbnails'),
             'category_id' => request('category_id'),
             'user_id' => auth()->id(),
         ]);

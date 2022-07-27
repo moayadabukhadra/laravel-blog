@@ -16,21 +16,35 @@
         <nav class="md:flex md:justify-between md:items-center">
             <div>
                 <a href="/">
-                    <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
+                    <img src="/images/logo.jpg" alt="Laracasts Logo" width="200" height="20">
                 </a>
             </div>
 
             <div class="mt-8 md:mt-0 flex items-center">
                 @auth
-                <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}</span>
-                <form action="/logout" method="POST" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+
+                <x-drob-down >
+                    <x-slot name="trigger">
+
+                <button class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}</button>
+                </x-slot>
+                <x-drobdown-item href="/admin/posts/create" :active="request()->is('/admin/posts/create')">New Post</x-dropdown-item>
+                <x-drobdown-item href="/">Home</x-dropdown-item>
+                <x-drobdown-item href="/logout" :active="request()->is('/logout')" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Logout</x-dropdown-item>
+
+                <form  id="logout-form" action="/logout" method="POST" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 hidden">
                     @csrf
                     <button>Logout</button>
                 </form>
+                </x-drob-down>
+
                 @else
                 <a href="/register" class="text-xs font-bold uppercase">Register</a>
                 <a href="/login" class="text-xs font-bold uppercase ml-3">Login</a>
                 @endauth
+
+
+
                 <a href="#newsletter" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscribe for Updates
                 </a>

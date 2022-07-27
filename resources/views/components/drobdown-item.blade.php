@@ -1,4 +1,4 @@
-@props(['active' => false])
+@props(['active' => 'false'])
 
 @php
 $classes ='block text-left px-3 text-sm leading-6 hover:bg-gray-300';
