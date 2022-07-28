@@ -28,8 +28,11 @@
 
                 <button class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}</button>
                 </x-slot>
-                <x-drobdown-item href="/admin/posts/create" :active="request()->is('/admin/posts/create')">New Post</x-dropdown-item>
                 <x-drobdown-item href="/">Home</x-dropdown-item>
+                @can('admin')
+                <x-drobdown-item href="/admin/posts/create" :active="request()->is('/admin/posts/create')">New Post</x-dropdown-item>
+                <x-drobdown-item href="/admin/posts" :active="request()->is('/admin/posts')">Dashboard</x-dropdown-item>
+                @endif
                 <x-drobdown-item href="/logout" :active="request()->is('/logout')" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Logout</x-dropdown-item>
 
                 <form  id="logout-form" action="/logout" method="POST" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 hidden">
