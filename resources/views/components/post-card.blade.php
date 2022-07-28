@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <a href="posts/{{ $post->id }}">
+                    <a href="/posts/{{ $post->id }}">
                         <h1 class="text-3xl">
                             {{ $post->title }}
                         </h1>

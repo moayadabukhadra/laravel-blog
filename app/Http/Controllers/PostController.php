@@ -7,6 +7,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
@@ -15,7 +16,6 @@ class PostController extends Controller
 
 
 public function index(){
-
 
     return view('posts.index',[
         'posts' => Post::latest()->filter
@@ -44,37 +44,12 @@ public function index(){
             'body' => $request->body,
             'user_id' => auth()->id(),
         ]);
-        return back()->with('flash', 'Your comment has been submitted');
+        return back()->with('success', 'Your comment has been submitted');
     }
 
-    public function create()
-    {
 
 
-        return view('posts.create');
 
-    }
-
-    public function store()
-    {
-
-        $this->validate(request(), [
-            'title' => 'required|min:3',
-            'body' => 'required|min:3',
-            'thumbnail' => 'required|image',
-            'category_id' => 'required|exists:categories,id',
-
-        ]);
-
-        Post::create([
-            'title' => request('title'),
-            'body' => request('body'),
-            'thumbnail' => request()->file('thumbnail')->store('thumbnails'),
-            'category_id' => request('category_id'),
-            'user_id' => auth()->id(),
-        ]);
-        return redirect('/')->with('flash', 'Your post has been created');
-    }
 
 
 }

@@ -4,7 +4,7 @@
                     @csrf
                     <x-form.input name="title" />
 
-                    <x-form.textarea name="body" />
+                    <x-form.textarea name="body" text="" />
 
                     <x-form.input name="thumbnail" type="file" />
 
